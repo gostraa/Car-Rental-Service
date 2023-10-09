@@ -1,20 +1,11 @@
 import CarsList from 'components/CarsList/CarsList';
-import Sidebar from 'components/Sidebar/Sidebar';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getAdvertsThunk } from 'redux/Advert/advertThunks';
+import SearchForm from 'components/SearchForm/SearchForm';
 
 const CatalogPage = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAdvertsThunk());
-  }, [dispatch]);
-
   return (
     <>
       <section>
-        <Sidebar />
+        <SearchForm />
       </section>
 
       <section>

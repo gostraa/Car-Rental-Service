@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CarInfoModal from 'components/CarInfoModal/CarInfoModal';
 import { closeModal, openModal } from 'redux/Modal/ModalSlice';
-import { addToFavorite } from 'redux/Advert/advertSlice';
+import { LoadMore, addToFavorite } from 'redux/Advert/advertSlice';
+import { getPaginationAdvertThunk } from 'redux/Advert/advertThunks';
 
 const CarsList = () => {
   const adverts = useSelector(state => state.adverts.adverts);
   const isModalOpen = useSelector(state => state.modal.isOpen);
   const [selectedId, setSelectedId] = useState(null);
-
+  const currentPage = useSelector(state => state.adverts.currentPage);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPaginationAdvertThunk(currentPage));
+  }, [dispatch, currentPage]);
+
+  const handleLoadMore = () => {
+    dispatch(LoadMore(currentPage));
+  };
 
   const handleOpenModal = id => {
     setSelectedId(id);
@@ -27,7 +36,7 @@ const CarsList = () => {
   return (
     <>
       <ul>
-        {adverts.map(advert => (
+        {adverts?.map(advert => (
           <li key={advert.id}>
             <div>
               <button onClick={() => handleClickToFavorites(advert)}>
@@ -56,6 +65,7 @@ const CarsList = () => {
             </button>
           </li>
         ))}
+        {currentPage < 5 && <button onClick={handleLoadMore}>Load more</button>}
       </ul>
       {isModalOpen && (
         <CarInfoModal onClose={handleCloseModal} id={selectedId} />

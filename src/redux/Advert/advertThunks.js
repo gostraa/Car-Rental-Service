@@ -1,5 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getAdverts, getAdvertsById } from 'services/advertService';
+import {
+  getAdverts,
+  getAdvertsById,
+  getPaginationAdverts,
+} from 'services/advertService';
 
 export const getAdvertsThunk = createAsyncThunk(
   'adverts/getAdvertsThunk',
@@ -20,6 +24,19 @@ export const getAdvertByIdThunk = createAsyncThunk(
       const advert = await getAdvertsById(id);
 
       return advert;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getPaginationAdvertThunk = createAsyncThunk(
+  'adverts/getPaginationAdvertThunk',
+  async (page = 1, { rejectWithValue }) => {
+    try {
+      const adverts = await getPaginationAdverts(page);
+
+      return adverts;
     } catch (error) {
       return rejectWithValue(error.message);
     }

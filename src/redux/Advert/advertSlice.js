@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAdvertsThunk } from './advertThunks';
-
-const savedFavoriteAdverts =
-  JSON.parse(localStorage.getItem('favoriteAdverts')) || [];
+import { getPaginationAdvertThunk } from './advertThunks';
 
 const initialState = {
   adverts: [],
-  favoriteAdverts: savedFavoriteAdverts,
+  favoriteAdverts: [],
+  currentPage: 1,
   isFavorite: false,
   isLoading: false,
   error: null,
@@ -22,38 +20,57 @@ const advertsSlice = createSlice({
       );
       if (!isAlreadyAdded) {
         state.favoriteAdverts.push(action.payload);
-        localStorage.setItem(
-          'favoriteAdverts',
-          JSON.stringify(state.favoriteAdverts)
-        );
       }
     },
     removeFromFavorite: (state, action) => {
       state.favoriteAdverts = state.favoriteAdverts.filter(
         advert => advert.id !== action.payload.id
       );
-      localStorage.setItem(
-        'favoriteAdverts',
-        JSON.stringify(state.favoriteAdverts)
-      );
+    },
+    LoadMore: state => {
+      state.currentPage = state.currentPage + 1;
+    },
+    addFilteredAdverts: (state, { payload }) => {
+      state.adverts = payload;
     },
   },
 
   extraReducers: builder =>
     builder
-      .addCase(getAdvertsThunk.pending, state => {
+      // .addCase(getAdvertsThunk.pending, state => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
+      // .addCase(getAdvertsThunk.fulfilled, (state, { payload }) => {
+      //   state.isLoading = false;
+      //   state.adverts = payload;
+      // })
+      // .addCase(getAdvertsThunk.rejected, (state, { error }) => {
+      //   state.isLoading = false;
+      //   state.error = error;
+      // })
+      .addCase(getPaginationAdvertThunk.pending, (state, { error }) => {
         state.isLoading = true;
-        state.error = null;
+        state.error = error;
       })
-      .addCase(getAdvertsThunk.fulfilled, (state, { payload }) => {
+      .addCase(getPaginationAdvertThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.adverts = payload;
+        if (state.currentPage === 1) {
+          state.adverts = payload;
+        } else {
+          state.adverts.push(...payload);
+        }
       })
-      .addCase(getAdvertsThunk.rejected, (state, { error }) => {
+      .addCase(getPaginationAdvertThunk.rejected, (state, { error }) => {
         state.isLoading = false;
         state.error = error;
       }),
 });
 
-export const { addToFavorite, removeFromFavorite } = advertsSlice.actions;
+export const {
+  addToFavorite,
+  removeFromFavorite,
+  LoadMore,
+  addFilteredAdverts,
+} = advertsSlice.actions;
 export const advertsReducer = advertsSlice.reducer;
