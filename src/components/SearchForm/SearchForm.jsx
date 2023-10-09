@@ -12,7 +12,6 @@ import {
   SelectBrand,
   SelectPrice,
   StyledForm,
-  Wrapper,
 } from './SearchForm.styled';
 
 const maxPrice = 200;
