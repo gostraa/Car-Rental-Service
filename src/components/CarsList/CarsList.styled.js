@@ -11,7 +11,7 @@ export const StyledList = styled.ul`
   }
 `;
 
-export const ImgWrapper = styled.div``;
+// export const ImgWrapper = styled.div``;
 
 export const BtnLearnMore = styled.button`
   width: 274px;
