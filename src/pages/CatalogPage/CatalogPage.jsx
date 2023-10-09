@@ -1,17 +1,13 @@
 import CarsList from 'components/CarsList/CarsList';
 import SearchForm from 'components/SearchForm/SearchForm';
+import { CatalogSection } from './CatalogPage.styled';
 
 const CatalogPage = () => {
   return (
-    <>
-      <section>
-        <SearchForm />
-      </section>
-
-      <section>
-        <CarsList />
-      </section>
-    </>
+    <CatalogSection>
+      <SearchForm />
+      <CarsList />
+    </CatalogSection>
   );
 };
 

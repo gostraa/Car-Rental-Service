@@ -1,5 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import SideBar from './SideBar/SideBar';
+import Loader from './Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../pages/CatalogPage/CatalogPage'));
@@ -9,13 +11,14 @@ const FavoritesPage = lazy(() =>
 
 export const App = () => {
   return (
-    <Suspense fallback={'Loading'}>
+    <Suspense fallback={<Loader />}>
       <Routes>
-        {/* <Route></Route> */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="/" element={<SideBar />}>
+          <Route index element={<HomePage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Route>
       </Routes>
     </Suspense>
   );

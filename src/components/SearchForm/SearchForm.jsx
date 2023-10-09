@@ -2,8 +2,18 @@ import { filterAdverts } from 'helpers/helpers';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFilteredAdverts } from 'redux/Advert/advertSlice';
-// import { getAdvertsThunk } from 'redux/Advert/advertThunks';
 import { getAdverts } from 'services/advertService';
+import {
+  DisableOption,
+  InputFrom,
+  InputTo,
+  InputWrapper,
+  SearchButton,
+  SelectBrand,
+  SelectPrice,
+  StyledForm,
+  Wrapper,
+} from './SearchForm.styled';
 
 const maxPrice = 200;
 
@@ -32,8 +42,6 @@ const optionsCar = [
 ];
 
 const SearchForm = () => {
-  // const adverts = useSelector(state => state.adverts.adverts);
-  // const filterOptions = useSelector(state => state.filter.initialFilters);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     make: '',
@@ -54,59 +62,70 @@ const SearchForm = () => {
     dispatch(addFilteredAdverts(filtered));
   };
   return (
-    <form>
-      <p>Car brand</p>
-      <select
-        name="make"
-        id="make"
-        defaultValue={''}
-        onChange={handleInputChange}
-      >
-        <option value="" disabled>
-          Enter the text
-        </option>
-        {optionsCar.map(option => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-      <p>Price/ 1 hour</p>
-      <select
-        name="rentalPrice"
-        id="price"
-        defaultValue={''}
-        onChange={handleInputChange}
-      >
-        <option value="" disabled>
-          To $
-        </option>
-        {Array.from({ length: maxPrice / 10 + 1 }, (_, index) => (
-          <option key={index} value={index * 10}>
-            {index * 10}
-          </option>
-        ))}
-      </select>
+    <StyledForm>
+      <div>
+        <p>Car brand</p>
 
-      <p>Сar mileage / km</p>
-      <input
-        type="text"
-        name="mileageFrom"
-        id="from"
-        placeholder="From"
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        name="mileageTo"
-        id="to"
-        placeholder="To"
-        onChange={handleInputChange}
-      />
-      <button type="button" onClick={handleSubmit}>
+        <SelectBrand
+          name="make"
+          id="make"
+          defaultValue={''}
+          onChange={handleInputChange}
+        >
+          <DisableOption value="" disabled>
+            Enter the text
+          </DisableOption>
+          {optionsCar.map(option => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </SelectBrand>
+      </div>
+
+      <div>
+        <p>Price/ 1 hour</p>
+        <SelectPrice
+          name="rentalPrice"
+          id="price"
+          defaultValue={''}
+          onChange={handleInputChange}
+        >
+          <DisableOption value="" disabled>
+            To $
+          </DisableOption>
+          {Array.from({ length: maxPrice / 10 + 1 }, (_, index) => (
+            <option key={index} value={index * 10}>
+              {index * 10}
+            </option>
+          ))}
+        </SelectPrice>
+      </div>
+
+      <div>
+        <p>Сar mileage / km</p>
+        <InputWrapper>
+          <InputFrom
+            type="text"
+            name="mileageFrom"
+            id="from"
+            placeholder="From"
+            onChange={handleInputChange}
+          />
+          <InputTo
+            type="text"
+            name="mileageTo"
+            id="to"
+            placeholder="To"
+            onChange={handleInputChange}
+          />
+        </InputWrapper>
+      </div>
+
+      <SearchButton type="button" onClick={handleSubmit}>
         Search
-      </button>
-    </form>
+      </SearchButton>
+    </StyledForm>
   );
 };
 
