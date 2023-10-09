@@ -2,7 +2,6 @@
 
 @import 'normalize.css';
 
-
 body {
   margin: 0;
   box-sizing: border-box;
@@ -18,17 +17,25 @@ code {
     monospace;
 }
 
-p{
-  margin:0;
-color: #8A8A89;
-font-family: Manrope;
-font-size: 14px;
-font-weight: 500;
-line-height: 1.28; 
-display: inline-block;
+p {
+  margin: 0;
+  color: #8a8a89;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  display: inline-block;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
+button {
+  border: none;
+}

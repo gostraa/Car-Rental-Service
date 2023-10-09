@@ -4,6 +4,7 @@ import CarInfoModal from 'components/CarInfoModal/CarInfoModal';
 import { closeModal, openModal } from 'redux/Modal/ModalSlice';
 import { LoadMore, addToFavorite } from 'redux/Advert/advertSlice';
 import { getPaginationAdvertThunk } from 'redux/Advert/advertThunks';
+import { BtnLearnMore, StyledList } from './CarsList.styled';
 
 const CarsList = () => {
   const adverts = useSelector(state => state.adverts.adverts);
@@ -35,14 +36,41 @@ const CarsList = () => {
 
   return (
     <>
-      <ul>
+      <StyledList>
         {adverts?.map(advert => (
           <li key={advert.id}>
-            <div>
-              <button onClick={() => handleClickToFavorites(advert)}>
+            <div
+              style={{
+                backgroundImage: `url(${advert.img})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '274px',
+                height: '200px',
+                position: 'relative',
+              }}
+            >
+              <button
+                onClick={() => handleClickToFavorites(advert)}
+                style={{
+                  position: 'absolute',
+                  zIndex: 10000,
+                  top: '10px',
+                  right: '10px',
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'white',
+                  cursor: 'pointer',
+                }}
+              >
                 to favorite
               </button>
-              <img src={advert.img} alt={advert.make} width={274} />
+              <img
+                src={advert.img}
+                alt={advert.make}
+                width={274}
+                height={200}
+                style={{ opacity: '0' }}
+              />
             </div>
             <div>
               <h2>
@@ -60,13 +88,13 @@ const CarsList = () => {
               <p>{advert.mileage}</p>
               <p>{advert.accessories[1]}</p>
             </div>
-            <button onClick={() => handleOpenModal(advert.id)}>
+            <BtnLearnMore onClick={() => handleOpenModal(advert.id)}>
               Learn more
-            </button>
+            </BtnLearnMore>
           </li>
         ))}
-        {currentPage < 5 && <button onClick={handleLoadMore}>Load more</button>}
-      </ul>
+      </StyledList>
+      {currentPage < 5 && <button onClick={handleLoadMore}>Load more</button>}
       {isModalOpen && (
         <CarInfoModal onClose={handleCloseModal} id={selectedId} />
       )}
