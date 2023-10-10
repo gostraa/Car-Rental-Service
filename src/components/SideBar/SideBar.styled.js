@@ -7,7 +7,6 @@ export const Navigation = styled.nav`
   gap: 40px;
   padding: 10px 0;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.5;
 `;
@@ -21,14 +20,14 @@ export const NavLinkStyles = `
   transition: color 0.3s ease, transform 0.3s ease; 
 
   &:hover {
-    color: #007bff; 
+    color: var(--primary-btn-color); 
     transform: scale(1.1); 
   }
 `;
 
 export const ActiveNavLinkStyles = `
   font-weight: bold; 
-  color: #3470ff; 
+  color: var(--primary-btn-color); 
   transform: scale(1.1);
 
 `;

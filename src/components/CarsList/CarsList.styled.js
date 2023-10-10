@@ -22,24 +22,32 @@ export const BtnLearnMore = styled.button`
   align-items: center;
   flex-shrink: 0;
   border-radius: 12px;
-  background: #3470ff;
-  color: #fff;
-  font-family: Manrope;
+  background: var(--primary-btn-color);
+  color: var(--white);
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
   line-height: 1.42;
   cursor: pointer;
+  transition: background 0.5s ease;
+
+  &:hover {
+    background: var(--secondary-btn-color);
+  }
 `;
 
 export const BtnLoadMore = styled.button`
   background-color: transparent;
-  color: #3470ff;
+  color: var(--primary-btn-color);
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   text-decoration-line: underline;
   cursor: pointer;
+  transition: color 0.5s ease;
+
+  &:hover {
+    color: var(--secondary-btn-color);
+  }
 `;
 
 export const MainWrapper = styled.div`
@@ -48,19 +56,17 @@ export const MainWrapper = styled.div`
   margin-bottom: 8px;
   padding: 0 4px;
   p {
-    color: #121417;
+    color: var(--secondary-text-color);
     font-size: 18px;
-    font-style: normal;
     font-weight: 500;
     line-height: 1.5;
-    /* margin-right: 4px; */
   }
   p:first-child {
     margin-right: 5px;
   }
 
   p:nth-child(2) {
-    color: #3470ff;
+    color: var(--primary-btn-color);
   }
 
   p:nth-child(3) {

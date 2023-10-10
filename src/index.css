@@ -1,17 +1,27 @@
 @import-normalize; /* bring in normalize.css styles */
 
 /* @import 'normalize.css'; */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@400;600&display=swap');
 * {
   box-sizing: border-box;
   font-family: 'Manrope';
 }
 
+:root {
+  --primary-btn-color: #3470ff;
+  --secondary-btn-color: #0b44cd;
+  --primary-text-color: rgba(18, 20, 23, 0.5);
+  --secondary-text-color: #121417;
+  --backdrop-color: rgba(0, 0, 0, 0.5);
+  --modal-elem-background: #f9f9f9;
+  --white: #fff;
+  --search-background: #f7f7fb;
+}
 
 body {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Manrope", sans-serif;
+  font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -10,11 +10,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeFromFavorite } from 'redux/Advert/advertSlice';
 import { closeModal, openModal } from 'redux/Modal/ModalSlice';
 import { FaRegHeart } from 'react-icons/fa6';
+import { selectFavoriteAdverts, selectModalOpen } from 'helpers/selectors';
 
 const FavoriteList = () => {
-  const favoritesAdverts = useSelector(state => state.adverts.favoriteAdverts);
+  const favoritesAdverts = useSelector(selectFavoriteAdverts);
+  const isModalOpen = useSelector(selectModalOpen);
   const [selectedId, setSelectedId] = useState(null);
-  const isModalOpen = useSelector(state => state.modal.isOpen);
   const dispatch = useDispatch();
 
   const handleClickDeleteFavorite = advert => {

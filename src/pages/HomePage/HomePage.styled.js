@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
-export const StyledSection = styled.section``;
+export const StyledSection = styled.section`
+  padding: 20px 128px 0 128px;
+  height: 1000px;
+`;
 
 export const Hero = styled.div`
   background: linear-gradient(rgba(1, 0, 0, 0.4), rgba(10, 0, 0, 0.6)),
@@ -10,7 +13,7 @@ export const Hero = styled.div`
       center/cover;
   width: 100%;
   background-position: 50% 70%;
-  height: 400px;
+  height: 555px;
   padding: 50px;
 
   h1 {
@@ -20,7 +23,7 @@ export const Hero = styled.div`
     margin-bottom: 50px;
   }
   span {
-    color: #3470ff;
+    color: var(--primary-btn-color);
   }
 `;
 export const WrapperBottom = styled.div`
@@ -40,6 +43,12 @@ export const RightDiv = styled.div`
     url('https://www.rentcars.ru/uploads/news/id167/nzn-17-02-2020.jpg')
       center/cover;
   width: 50%;
+  padding: 20px;
+  h2 {
+    color: var(--white);
+    font-size: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  }
 `;
 
 export const ToCatalogLink = styled(Link)`
@@ -47,10 +56,15 @@ export const ToCatalogLink = styled(Link)`
   height: 48px;
   padding: 14px 44px;
   border-radius: 12px;
-  background: #3470ff;
+  background: var(--primary-btn-color);
   text-decoration: none;
   color: var(--White, #fff);
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.1; /* 111.111% */
+  line-height: 1.1;
+  transition: background 0.5s ease;
+
+  &:hover {
+    background: var(--secondary-btn-color);
+  }
 `;

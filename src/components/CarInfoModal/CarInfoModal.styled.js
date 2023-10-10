@@ -6,7 +6,7 @@ export const BackDrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--backdrop-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,8 +16,8 @@ export const BackDrop = styled.div`
 export const ModalContainer = styled.div`
   padding: 20px 37px 40px 37px;
   border-radius: 24px;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тень модального окна */
+  background: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 541px;
   overflow: auto;
   text-align: start;
@@ -59,7 +59,7 @@ export const InfoModal = styled.div`
 `;
 
 export const Description = styled.p`
-  color: #121417;
+  color: var(--secondary-text-color);
   font-size: 14px;
   line-height: 1.42;
   padding-left: 6px;
@@ -92,18 +92,16 @@ export const BackgroundWrapper = styled(Wrapper)`
 
 export const BackgroundElem = styled.p`
   border-radius: 35px;
-  background: #f9f9f9;
+  background: var(--modal-elem-background);
   padding: 7px 14px;
   color: #363535;
   font-family: Montserrat;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.24px;
 
   span {
-    color: #3470ff;
+    color: var(--primary-btn-color);
     font-family: Montserrat;
     font-size: 12px;
     margin-left: 5px;
@@ -120,11 +118,14 @@ export const RentalLink = styled.a`
   align-items: center;
   border-radius: 12px;
   background: #3470ff;
-  color: var(--White, #fff);
-  font-family: Manrope;
+  color: var(--white);
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 20px; /* 142.857% */
+  line-height: 1.42;
   text-decoration: none;
+  transition: background 0.5s ease;
+
+  &:hover {
+    background: #0b44cd;
+  }
 `;

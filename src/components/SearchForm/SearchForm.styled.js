@@ -23,13 +23,13 @@ export const StyledForm = styled.form`
     height: 48px;
     border: none;
     border-radius: 14px;
-    background: #f7f7fb;
+    background: var(--search-background);
   }
 
   input {
     height: 48px;
     padding: 14px 24px 14px 24px;
-    background: #f7f7fb;
+    background: var(--search-background);
   }
 
   input:focus {
@@ -44,7 +44,7 @@ export const SelectBrand = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  overflow: hidden; /* Скрыть скроллбар */
+  overflow: hidden;
 `;
 
 export const SelectPrice = styled.select`
@@ -53,14 +53,12 @@ export const SelectPrice = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  overflow: hidden; /* Скрыть скроллбар */
+  overflow: hidden;
 `;
 
 export const DisableOption = styled.option`
-  color: #121417;
-  font-family: Manrope;
+  color: var(--secondary-text-color);
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.1;
 `;
@@ -76,8 +74,7 @@ export const InputFrom = styled.input`
   width: 160px;
 
   &::placeholder {
-    color: #121417;
-    font-family: Manrope;
+    color: var(--secondary-text-color);
     font-size: 18px;
     font-weight: 500;
     line-height: 1.1;
@@ -89,8 +86,7 @@ export const InputTo = styled.input`
   width: 160px;
 
   &::placeholder {
-    color: #121417;
-    font-family: Manrope;
+    color: var(--secondary-text-color);
     font-size: 18px;
     font-weight: 500;
     line-height: 1.1;
@@ -99,17 +95,21 @@ export const InputTo = styled.input`
 
 export const SearchButton = styled.button`
   display: flex;
-  height: 48px;
-  padding: 14px 44px;
   justify-content: center;
   align-items: center;
+  height: 48px;
+  padding: 14px 44px;
   border-radius: 12px;
-  background: #3470ff;
-  color: #fff;
-  font-family: Manrope;
+  background: var(--primary-btn-color);
+  color: var(--white);
   font-size: 16px;
   line-height: 1.4;
   cursor: pointer;
+  transition: background 0.5s ease;
+
+  &:hover {
+    background: var(--secondary-btn-color);
+  }
 `;
 
 export const StyledP = styled.p`
@@ -117,10 +117,8 @@ export const StyledP = styled.p`
 `;
 
 export const Option = styled.option`
-  color: rgba(18, 20, 23, 0.2);
-  font-family: Manrope;
+  color: var(--primary-text-color);
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 125% */
+  line-height: 20px;
 `;

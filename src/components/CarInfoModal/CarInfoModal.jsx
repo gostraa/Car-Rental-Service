@@ -16,9 +16,10 @@ import {
   Wrapper,
 } from './CarInfoModal.styled';
 import { MainWrapper } from 'components/CarsList/CarsList.styled';
+import { selectCurrentAdvert } from 'helpers/selectors';
 
 const CarInfoModal = ({ id, onClose }) => {
-  const currentAdvert = useSelector(state => state.modal.currentAdvert);
+  const currentAdvert = useSelector(selectCurrentAdvert);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,16 +59,8 @@ const CarInfoModal = ({ id, onClose }) => {
           </div>
           <div>
             <MainWrapper>
-              <p>
-                {currentAdvert.make.length > 8
-                  ? currentAdvert.make.slice(0, 8) + '...'
-                  : currentAdvert.make}
-              </p>
-              <p>
-                {currentAdvert.model.length > 8
-                  ? currentAdvert.model.slice(0, 8) + '...'
-                  : currentAdvert.model}
-              </p>
+              <p>{currentAdvert.make}</p>
+              <p>{currentAdvert.model}</p>
 
               <p>,{currentAdvert.year}</p>
             </MainWrapper>
@@ -98,10 +91,8 @@ const CarInfoModal = ({ id, onClose }) => {
             {currentAdvert.rentalConditions
               .split('\n')
               .map((element, index) => {
-                // Используем регулярное выражение для поиска числа
                 const matches = element.match(/(\d+)/);
 
-                // Если число найдено, заменим его на число внутри <span> с цветом
                 const modifiedElement = matches
                   ? element.replace(
                       matches[0],

@@ -17,13 +17,20 @@ import {
   MainWrapper,
   StyledList,
 } from './CarsList.styled';
+import {
+  selectAdverts,
+  selectCurrentPage,
+  selectFavoriteAdverts,
+  selectModalOpen,
+} from 'helpers/selectors';
 
 const CarsList = () => {
-  const adverts = useSelector(state => state.adverts.adverts);
-  const isModalOpen = useSelector(state => state.modal.isOpen);
-  const favorites = useSelector(state => state.adverts.favoriteAdverts);
+  const adverts = useSelector(selectAdverts);
+  const isModalOpen = useSelector(selectModalOpen);
+  const favorites = useSelector(selectFavoriteAdverts);
+  const currentPage = useSelector(selectCurrentPage);
   const [selectedId, setSelectedId] = useState(null);
-  const currentPage = useSelector(state => state.adverts.currentPage);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

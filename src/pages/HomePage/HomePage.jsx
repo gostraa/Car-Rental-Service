@@ -19,7 +19,13 @@ const HomePage = () => {
       </Hero>
       <WrapperBottom>
         <LeftDiv></LeftDiv>
-        <RightDiv></RightDiv>
+        <RightDiv>
+          <h2>
+            Discover the Perfect Ride with Us! Explore a wide range of rental
+            cars for every need and budget. Find, book, and hit the road
+            hassle-free. Your journey begins here!
+          </h2>
+        </RightDiv>
       </WrapperBottom>
     </StyledSection>
   );
