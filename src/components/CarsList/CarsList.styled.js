@@ -57,7 +57,7 @@ export const MainWrapper = styled.div`
   padding: 0 4px;
   p {
     color: var(--secondary-text-color);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
   }
