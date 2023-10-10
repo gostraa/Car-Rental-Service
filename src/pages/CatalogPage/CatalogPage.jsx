@@ -2,7 +2,6 @@ import CarsList from 'components/CarsList/CarsList';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { Section } from './CatalogPage.styled';
 import { ToastContainer } from 'react-toastify';
-import { useSelector } from 'react-redux';
 
 const CatalogPage = () => {
   return (

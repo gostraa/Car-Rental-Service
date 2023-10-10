@@ -5,7 +5,6 @@ import {
   BackDrop,
   BackgroundElem,
   BackgroundWrapper,
-  BckgroundWrapper,
   Description,
   Element,
   Headers,
