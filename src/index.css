@@ -1,13 +1,17 @@
 @import-normalize; /* bring in normalize.css styles */
 
-@import 'normalize.css';
+/* @import 'normalize.css'; */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@400;600&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: 'Manrope';
+}
+
 
 body {
   margin: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Manrope", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -20,7 +24,6 @@ code {
 p {
   margin: 0;
   color: #8a8a89;
-  font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.28;

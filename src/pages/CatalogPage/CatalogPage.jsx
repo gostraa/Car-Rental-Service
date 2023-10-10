@@ -1,13 +1,16 @@
 import CarsList from 'components/CarsList/CarsList';
 import SearchForm from 'components/SearchForm/SearchForm';
-import { CatalogSection } from './CatalogPage.styled';
+import { Section } from './CatalogPage.styled';
+import { ToastContainer } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const CatalogPage = () => {
   return (
-    <CatalogSection>
+    <Section>
       <SearchForm />
       <CarsList />
-    </CatalogSection>
+      <ToastContainer autoClose={2500} />
+    </Section>
   );
 };
 

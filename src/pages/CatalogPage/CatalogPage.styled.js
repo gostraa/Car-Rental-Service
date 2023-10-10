@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const CatalogSection = styled.section`
+export const Section = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 150px 128px;
+  padding: 50px 128px;
 `;

@@ -1,15 +1,16 @@
 import Loader from 'components/Loader/Loader';
 import React, { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Navigation, StyledNavLink } from './SideBar.styled';
 
 const SideBar = () => {
   return (
     <Suspense fallback={<Loader />}>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/catalog">Catalog</NavLink>
-        <NavLink to="/favorites">Favorites</NavLink>
-      </nav>
+      <Navigation>
+        <StyledNavLink to="/">Home</StyledNavLink>
+        <StyledNavLink to="/catalog">Catalog</StyledNavLink>
+        <StyledNavLink to="/favorites">Favorites</StyledNavLink>
+      </Navigation>
       <Outlet />
     </Suspense>
   );

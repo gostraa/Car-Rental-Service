@@ -8,10 +8,12 @@ import {
   InputFrom,
   InputTo,
   InputWrapper,
+  Option,
   SearchButton,
   SelectBrand,
   SelectPrice,
   StyledForm,
+  StyledP,
 } from './SearchForm.styled';
 
 const maxPrice = 200;
@@ -63,7 +65,7 @@ const SearchForm = () => {
   return (
     <StyledForm>
       <div>
-        <p>Car brand</p>
+        <StyledP>Car brand</StyledP>
 
         <SelectBrand
           name="make"
@@ -75,15 +77,15 @@ const SearchForm = () => {
             Enter the text
           </DisableOption>
           {optionsCar.map(option => (
-            <option key={option} value={option}>
+            <Option key={option} value={option}>
               {option}
-            </option>
+            </Option>
           ))}
         </SelectBrand>
       </div>
 
       <div>
-        <p>Price/ 1 hour</p>
+        <StyledP>Price/ 1 hour</StyledP>
         <SelectPrice
           name="rentalPrice"
           id="price"
@@ -94,15 +96,15 @@ const SearchForm = () => {
             To $
           </DisableOption>
           {Array.from({ length: maxPrice / 10 + 1 }, (_, index) => (
-            <option key={index} value={index * 10}>
+            <Option key={index} value={index * 10}>
               {index * 10}
-            </option>
+            </Option>
           ))}
         </SelectPrice>
       </div>
 
       <div>
-        <p>Сar mileage / km</p>
+        <StyledP>Сar mileage / km</StyledP>
         <InputWrapper>
           <InputFrom
             type="text"

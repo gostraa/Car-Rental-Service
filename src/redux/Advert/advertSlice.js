@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getPaginationAdvertThunk } from './advertThunks';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = {
   adverts: [],
@@ -15,17 +17,19 @@ const advertsSlice = createSlice({
   initialState,
   reducers: {
     addToFavorite: (state, action) => {
-      const isAlreadyAdded = state.favoriteAdverts.some(
+      const isAlreadyAdded = state.favoriteAdverts?.some(
         advert => advert.id === action.payload.id
       );
       if (!isAlreadyAdded) {
-        state.favoriteAdverts.push(action.payload);
+        state.favoriteAdverts?.push(action.payload);
+        toast.success('added to favorites');
       }
     },
     removeFromFavorite: (state, action) => {
       state.favoriteAdverts = state.favoriteAdverts.filter(
         advert => advert.id !== action.payload.id
       );
+      toast.info('deleted from favorites');
     },
     LoadMore: state => {
       state.currentPage = state.currentPage + 1;
@@ -33,22 +37,13 @@ const advertsSlice = createSlice({
     addFilteredAdverts: (state, { payload }) => {
       state.adverts = payload;
     },
+    removeCurrentPage: state => {
+      state.currentPage = 1;
+    },
   },
 
   extraReducers: builder =>
     builder
-      // .addCase(getAdvertsThunk.pending, state => {
-      //   state.isLoading = true;
-      //   state.error = null;
-      // })
-      // .addCase(getAdvertsThunk.fulfilled, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.adverts = payload;
-      // })
-      // .addCase(getAdvertsThunk.rejected, (state, { error }) => {
-      //   state.isLoading = false;
-      //   state.error = error;
-      // })
       .addCase(getPaginationAdvertThunk.pending, (state, { error }) => {
         state.isLoading = true;
         state.error = error;
@@ -72,5 +67,6 @@ export const {
   removeFromFavorite,
   LoadMore,
   addFilteredAdverts,
+  removeCurrentPage,
 } = advertsSlice.actions;
 export const advertsReducer = advertsSlice.reducer;
