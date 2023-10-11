@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledSection = styled.section`
-  padding: 55px 128px 0 128px;
+  padding: 95px 128px 0 128px;
+  max-width: 1440px;
+  margin: 0 auto;
 `;
 
 export const Hero = styled.div`

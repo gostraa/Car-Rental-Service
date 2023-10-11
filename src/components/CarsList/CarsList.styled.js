@@ -8,6 +8,7 @@ export const StyledList = styled.ul`
   padding: 0;
   list-style: none;
   margin-bottom: 100px;
+  max-width: 1440px;
   li {
     width: 274px;
     max-height: 426px;
@@ -82,5 +83,9 @@ export const InfoWrapper = styled.div`
     padding: 2px 6px;
     border-right: 1px solid;
     text-align: center;
+  }
+
+  p:last-child {
+    border: 0;
   }
 `;

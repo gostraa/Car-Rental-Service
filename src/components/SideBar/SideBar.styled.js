@@ -12,7 +12,7 @@ export const Navigation = styled.nav`
   font-weight: 500;
   line-height: 1.5;
   position: fixed;
-  z-index: 1000;
+  z-index: 1;
 `;
 
 export const NavLinkStyles = `

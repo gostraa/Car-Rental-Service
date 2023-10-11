@@ -10,6 +10,7 @@ export const BackDrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 `;
 
 export const ModalContainer = styled.div`
