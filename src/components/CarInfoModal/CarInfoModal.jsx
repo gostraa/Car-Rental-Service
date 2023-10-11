@@ -17,6 +17,9 @@ import {
 } from './CarInfoModal.styled';
 import { MainWrapper } from 'components/CarsList/CarsList.styled';
 import { selectCurrentAdvert } from 'helpers/selectors';
+import { createPortal } from 'react-dom';
+
+const modal = document.querySelector('#modal');
 
 const CarInfoModal = ({ id, onClose }) => {
   const currentAdvert = useSelector(selectCurrentAdvert);
@@ -30,10 +33,11 @@ const CarInfoModal = ({ id, onClose }) => {
         onClose();
       }
     };
-
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
+      document.body.style.overflow = 'visible';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [dispatch, id, onClose]);
@@ -44,7 +48,7 @@ const CarInfoModal = ({ id, onClose }) => {
     }
   };
 
-  return (
+  return createPortal(
     currentAdvert && (
       <BackDrop onClick={handleBackdropClick}>
         <ModalContainer>
@@ -120,7 +124,8 @@ const CarInfoModal = ({ id, onClose }) => {
           <RentalLink href="tel:+380730000000">Rental car</RentalLink>
         </ModalContainer>
       </BackDrop>
-    )
+    ),
+    modal
   );
 };
 

@@ -23,6 +23,7 @@ import {
   selectFavoriteAdverts,
   selectModalOpen,
 } from 'helpers/selectors';
+import { useLocation } from 'react-router-dom';
 
 const CarsList = () => {
   const adverts = useSelector(selectAdverts);
@@ -32,6 +33,9 @@ const CarsList = () => {
   const [selectedId, setSelectedId] = useState(null);
 
   const dispatch = useDispatch();
+
+  const location = useLocation();
+  console.log(location.pathname);
 
   useEffect(() => {
     dispatch(getPaginationAdvertThunk(currentPage));
@@ -60,94 +64,161 @@ const CarsList = () => {
     }
   };
 
-  return (
-    <>
-      {adverts.length !== 0 ? (
-        <StyledList>
-          {adverts?.map(advert => {
-            const address = advert.address;
-            const parts = address.split(', ');
-            return (
-              <li key={advert.id}>
-                <div
-                  style={{
-                    borderRadius: '12px',
-                    backgroundImage: `url(${advert.img})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    width: '274px',
-                    height: '268px',
-                    marginBottom: '14px',
-                    position: 'relative',
-                  }}
-                >
-                  <FaRegHeart
-                    onClick={() => handleClickToFavorites(advert)}
+  if (location.pathname === '/favorites')
+    return (
+      favorites && (
+        <>
+          <StyledList>
+            {favorites.map(advert => {
+              const address = advert.address;
+              const parts = address.split(', ');
+              return (
+                <li key={advert.id}>
+                  <div
                     style={{
-                      position: 'absolute',
-                      zIndex: 10000,
-                      top: '10px',
-                      right: '10px',
-                      background: 'transparent',
-                      border: 'none',
-                      color: favorites.some(fav => fav.id === advert.id)
-                        ? '#3470FF'
-                        : 'white',
-                      cursor: 'pointer',
-                      width: '22px',
-                      height: '22px',
+                      borderRadius: '12px',
+                      backgroundImage: `url(${advert.img})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      width: '274px',
+                      height: '268px',
+                      marginBottom: '14px',
+                      position: 'relative',
                     }}
-                  />
-                  <img
-                    src={advert.img}
-                    alt={advert.make}
-                    width={274}
-                    height={200}
-                    style={{ opacity: '0' }}
-                  />
-                </div>
-                <MainWrapper>
-                  <p>
-                    {advert.make.length > 8
-                      ? advert.make.slice(0, 8) + '...'
-                      : advert.make}
-                  </p>
-                  <p>
-                    {advert.model.length > 8
-                      ? advert.model.slice(0, 8) + '...'
-                      : advert.model}
-                  </p>
-                  <p>,{advert.year}</p>
-                  <p>{advert.rentalPrice}</p>
-                </MainWrapper>
-                <InfoWrapper>
-                  <p>{parts[parts.length - 2]}</p>
-                  <p>{parts[parts.length - 1]}</p>
-                  <p>{advert.type}</p>
-                  <p>{advert.model}</p>
-                  <p>{advert.mileage}</p>
-                  <p>{advert.accessories[2]}</p>
-                </InfoWrapper>
-                <BtnLearnMore onClick={() => handleOpenModal(advert.id)}>
-                  Learn more
-                </BtnLearnMore>
-              </li>
-            );
-          })}
-        </StyledList>
-      ) : (
-        <p>There's nothing here yet</p>
-      )}
+                  >
+                    <FaRegHeart
+                      style={{
+                        position: 'absolute',
+                        top: '10px',
+                        right: '10px',
 
-      {currentPage > 4 || adverts.length < 8 || (
-        <BtnLoadMore onClick={handleLoadMore}>Load more</BtnLoadMore>
-      )}
+                        border: 'none',
+                        color: '#3470FF',
+                        cursor: 'pointer',
+                        width: '23px',
+                        height: '23px',
+                      }}
+                      onClick={() => handleClickToFavorites(advert)}
+                    />
+                  </div>
+                  <MainWrapper>
+                    <p>
+                      {advert.make.length > 8
+                        ? advert.make.slice(0, 8) + '...'
+                        : advert.make}
+                    </p>
+                    <p>
+                      {advert.model.length > 8
+                        ? advert.model.slice(0, 8) + '...'
+                        : advert.model}
+                    </p>
+                    <p>,{advert.year}</p>
+                    <p>{advert.rentalPrice}</p>
+                  </MainWrapper>
+                  <InfoWrapper>
+                    <p>{parts[parts.length - 2]}</p>
+                    <p>{parts[parts.length - 1]}</p>
+                    <p>{advert.rentalCompany}</p>
+                    <p>{advert.type}</p>
+                    <p>{advert.model}</p>
+                    <p>{advert.mileage}</p>
+                    <p>{advert.accessories[2]}</p>
+                  </InfoWrapper>
+                  <BtnLearnMore onClick={() => handleOpenModal(advert.id)}>
+                    Learn more
+                  </BtnLearnMore>
+                </li>
+              );
+            })}
+          </StyledList>
+          {isModalOpen && (
+            <CarInfoModal onClose={handleCloseModal} id={selectedId} />
+          )}
+        </>
+      )
+    );
+  if (location.pathname === '/catalog')
+    return (
+      <>
+        {adverts.length !== 0 ? (
+          <StyledList>
+            {adverts?.map(advert => {
+              const address = advert.address;
+              const parts = address.split(', ');
+              return (
+                <li key={advert.id}>
+                  <div
+                    style={{
+                      borderRadius: '12px',
+                      backgroundImage: `url(${advert.img})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      width: '274px',
+                      height: '268px',
+                      marginBottom: '14px',
+                      position: 'relative',
+                    }}
+                  >
+                    <FaRegHeart
+                      onClick={() => handleClickToFavorites(advert)}
+                      style={{
+                        position: 'absolute',
 
-      {isModalOpen && (
-        <CarInfoModal onClose={handleCloseModal} id={selectedId} />
-      )}
-    </>
-  );
+                        top: '10px',
+                        right: '10px',
+                        background: 'transparent',
+                        border: 'none',
+                        color: favorites.some(fav => fav.id === advert.id)
+                          ? '#3470FF'
+                          : 'white',
+                        cursor: 'pointer',
+                        width: '22px',
+                        height: '22px',
+                      }}
+                    />
+                  </div>
+                  <MainWrapper>
+                    <p>
+                      {advert.make.length > 8
+                        ? advert.make.slice(0, 8) + '...'
+                        : advert.make}
+                    </p>
+                    <p>
+                      {advert.model.length > 8
+                        ? advert.model.slice(0, 8) + '...'
+                        : advert.model}
+                    </p>
+                    <p>,{advert.year}</p>
+                    <p>{advert.rentalPrice}</p>
+                  </MainWrapper>
+                  <InfoWrapper>
+                    <p>{parts[parts.length - 2]}</p>
+                    <p>{parts[parts.length - 1]}</p>
+                    <p>{advert.type}</p>
+                    <p>{advert.model}</p>
+                    <p>{advert.mileage}</p>
+                    <p>{advert.accessories[2]}</p>
+                  </InfoWrapper>
+                  <BtnLearnMore onClick={() => handleOpenModal(advert.id)}>
+                    Learn more
+                  </BtnLearnMore>
+                </li>
+              );
+            })}
+          </StyledList>
+        ) : (
+          <p>There's nothing here yet</p>
+        )}
+
+        {currentPage > 4 || adverts.length < 8 || (
+          <BtnLoadMore onClick={handleLoadMore}>Load more</BtnLoadMore>
+        )}
+
+        {isModalOpen && (
+          <CarInfoModal onClose={handleCloseModal} id={selectedId} />
+        )}
+      </>
+    );
 };
 
 export default CarsList;

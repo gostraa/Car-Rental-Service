@@ -1,4 +1,5 @@
-import FavoriteList from 'components/FavoriteList/FavoriteList';
+import CarsList from 'components/CarsList/CarsList';
+
 import { selectFavoriteAdverts } from 'helpers/selectors';
 import { Section } from 'pages/CatalogPage/CatalogPage.styled';
 import React, { useEffect } from 'react';
@@ -14,11 +15,7 @@ const FavoritePage = () => {
   }, [dispatch]);
   return (
     <Section>
-      {favorites.length !== 0 ? (
-        <FavoriteList />
-      ) : (
-        <p>there's nothing here yet</p>
-      )}
+      {favorites.length !== 0 ? <CarsList /> : <p>there's nothing here yet</p>}
 
       <ToastContainer autoClose={2500} />
     </Section>
