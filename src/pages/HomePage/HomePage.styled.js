@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledSection = styled.section`
-  padding: 20px 128px 0 128px;
-  height: 1000px;
+  padding: 55px 128px 0 128px;
 `;
 
 export const Hero = styled.div`

@@ -5,10 +5,14 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: center;
   gap: 40px;
+  width: 100%;
   padding: 10px 0;
+  background-color: var(--white);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.5;
+  position: fixed;
+  z-index: 1000;
 `;
 
 export const NavLinkStyles = `
