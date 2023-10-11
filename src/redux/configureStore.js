@@ -12,7 +12,6 @@ import {
   persistStore,
 } from 'redux-persist';
 import { modalReducer } from './Modal/ModalSlice';
-// import { filterReducer } from './Filter/FilterSlice';
 
 const advertPersistConfig = {
   key: 'favoriteAdverts',
@@ -24,7 +23,6 @@ export const store = configureStore({
   reducer: {
     adverts: persistReducer(advertPersistConfig, advertsReducer),
     modal: modalReducer,
-    // filter: filterReducer,
   },
 
   middleware: getDefaultMiddleware =>

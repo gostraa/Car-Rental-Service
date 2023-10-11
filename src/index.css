@@ -1,6 +1,6 @@
 @import-normalize; /* bring in normalize.css styles */
 
-/* @import 'normalize.css'; */
+
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@400;600&display=swap');
 * {
   box-sizing: border-box;

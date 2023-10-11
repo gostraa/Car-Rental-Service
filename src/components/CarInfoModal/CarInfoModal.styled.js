@@ -117,7 +117,7 @@ export const RentalLink = styled.a`
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  background: #3470ff;
+  background: var(--primary-btn-color);
   color: var(--white);
   font-size: 14px;
   font-weight: 600;
