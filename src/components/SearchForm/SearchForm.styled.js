@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const StyledForm = styled.form`
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
   gap: 18px;
-  width: 859px;
+
   margin-bottom: 50px;
 
   div:first-child {

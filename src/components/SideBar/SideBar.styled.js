@@ -3,16 +3,21 @@ import styled from 'styled-components';
 
 export const Navigation = styled.nav`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 40px;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px 10px;
   background-color: var(--white);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.5;
   position: fixed;
   z-index: 1;
+
+  @media screen and (min-width: 768px) and (max-width: 2560px) {
+    justify-content: center;
+    padding: 10px 0;
+  }
 `;
 
 export const NavLinkStyles = `

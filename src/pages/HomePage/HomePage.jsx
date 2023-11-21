@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Hero,
-  LeftDiv,
-  RightDiv,
-  StyledSection,
-  ToCatalogLink,
-  WrapperBottom,
-} from './HomePage.styled';
+import { Hero, StyledSection, ToCatalogLink } from './HomePage.styled';
 
 const HomePage = () => {
   return (
@@ -17,16 +10,6 @@ const HomePage = () => {
         </h1>
         <ToCatalogLink to="/catalog">TO OUR CATALOG</ToCatalogLink>
       </Hero>
-      <WrapperBottom>
-        <LeftDiv></LeftDiv>
-        <RightDiv>
-          <h2>
-            Discover the Perfect Ride with Us! Explore a wide range of rental
-            cars for every need and budget. Find, book, and hit the road
-            hassle-free. Your journey begins here!
-          </h2>
-        </RightDiv>
-      </WrapperBottom>
     </StyledSection>
   );
 };
