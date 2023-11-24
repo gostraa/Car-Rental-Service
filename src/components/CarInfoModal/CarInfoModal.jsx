@@ -12,6 +12,7 @@ import {
   ModalContainer,
   ModalImg,
   ModalSvg,
+  ModalSvgWrap,
   RentalLink,
   Wrapper,
 } from './CarInfoModal.styled';
@@ -52,14 +53,12 @@ const CarInfoModal = ({ id, onClose }) => {
     currentAdvert && (
       <BackDrop onClick={handleBackdropClick}>
         <ModalContainer>
-          <ModalSvg onClick={onClose} />
+          <ModalSvgWrap>
+            <ModalSvg onClick={onClose} />
+          </ModalSvgWrap>
 
           <div>
-            <ModalImg
-              src={currentAdvert.img}
-              alt={currentAdvert.model}
-              width={465}
-            />
+            <ModalImg src={currentAdvert.img} alt={currentAdvert.model} />
           </div>
           <div>
             <MainWrapper>

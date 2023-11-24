@@ -14,7 +14,7 @@ export const BackDrop = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  padding: 20px 37px 40px 37px;
+  padding: 15px 30px 40px 30px;
   border-radius: 24px;
   background: var(--white);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -23,24 +23,40 @@ export const ModalContainer = styled.div`
   text-align: start;
 
   div:nth-child(2) {
-    margin-bottom: 14px;
+    margin-bottom: 22px;
   }
 
   div:nth-child(6) {
     margin-bottom: 24px;
   }
+
+  @media screen and (max-width: 767.9px) {
+    width: 310px;
+    padding: 10px;
+  }
 `;
 
 export const ModalImg = styled.img`
+  width: 465px;
   border-radius: 24px;
+
+  @media screen and (max-width: 767.9px) {
+    width: 290px;
+  }
+`;
+
+export const ModalSvgWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const ModalSvg = styled(RxCross1)`
-  position: relative;
   width: 24px;
   height: 24px;
-  left: 460px;
-  cursor: pointer;
+  @media screen and (max-width: 767.9px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const InfoModal = styled.div`
