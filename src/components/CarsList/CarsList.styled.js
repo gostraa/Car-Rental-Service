@@ -4,11 +4,19 @@ export const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 29px;
+  gap: 15px;
   padding: 0;
   list-style: none;
   margin-bottom: 100px;
   max-width: 1440px;
+
+  @media screen and (max-width: 767.9px) {
+    gap: 15px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    gap: 29px;
+  }
   li {
     width: 274px;
     max-height: 426px;

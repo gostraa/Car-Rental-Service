@@ -19,6 +19,7 @@ export const ModalContainer = styled.div`
   background: var(--white);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 541px;
+
   overflow: auto;
   text-align: start;
 
@@ -31,18 +32,15 @@ export const ModalContainer = styled.div`
   }
 
   @media screen and (max-width: 767.9px) {
-    width: 310px;
+    width: 90%;
+    height: 99%;
     padding: 10px;
   }
 `;
 
 export const ModalImg = styled.img`
-  width: 465px;
+  width: 100%;
   border-radius: 24px;
-
-  @media screen and (max-width: 767.9px) {
-    width: 290px;
-  }
 `;
 
 export const ModalSvgWrap = styled.div`
