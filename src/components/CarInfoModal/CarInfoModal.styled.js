@@ -24,11 +24,11 @@ export const ModalContainer = styled.div`
   text-align: start;
 
   div:nth-child(2) {
-    margin-bottom: 22px;
+    margin-bottom: 10px;
   }
 
   div:nth-child(6) {
-    margin-bottom: 24px;
+    margin-bottom: 8px;
   }
 
   @media screen and (max-width: 767.9px) {
@@ -77,7 +77,7 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 1.42;
   padding-left: 6px;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
 `;
 
 export const Headers = styled(Description)`
@@ -101,7 +101,7 @@ export const BackgroundWrapper = styled(Wrapper)`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
 `;
 
 export const BackgroundElem = styled.p`
