@@ -14,6 +14,9 @@ export const BackDrop = styled.div`
 `;
 
 export const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 15px 30px 40px 30px;
   border-radius: 24px;
   background: var(--white);
