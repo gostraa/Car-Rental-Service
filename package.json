@@ -2,7 +2,7 @@
   "name": "technical_task",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gostraa.github.io/technical_task/",
+  "homepage": "https://gostraa.github.io/Car-Rental-Service/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.16.3",
